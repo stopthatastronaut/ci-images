@@ -1,7 +1,6 @@
 version: 2.1
 jobs:
   build:
-    context: DockerHub # loads the DockerHub vars
     machine: true
     steps:
       - checkout
@@ -33,3 +32,10 @@ jobs:
               echo $DOCKER_PASSWORD | docker login -u stopthatastronaut --password-stdin
               docker push stopthatastronaut/sta-terraform:$TAG
             fi
+
+workflows:
+  build:
+    jobs:
+      - build:
+          context:
+            - DockerHub
