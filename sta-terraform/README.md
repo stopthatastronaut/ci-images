@@ -11,4 +11,6 @@ A terraform-oriented image for StopThatAstronaut/The Devops Company
 
 ## Build
 
-No CI currently set up. Builds locally.
+CircleCI now set up. Builds off of main. Aaarggh.
+
+[![CircleCI](https://circleci.com/gh/stopthatastronaut/ci-images.svg?style=svg)](https://circleci.com/gh/stopthatastronaut)
