@@ -1,6 +1,6 @@
-# STA-terraform
+# STA-terraform-alpine-exp
 
-A terraform-oriented image for StopThatAstronaut/The Devops Company
+A terraform-ALPINE-oriented image for StopThatAstronaut/The Devops Company
 
 ## Contains
 

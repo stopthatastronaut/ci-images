@@ -30,8 +30,6 @@ RUN mkdir -p ~/.terraform.d/plugins/linux_amd64/
 
 RUN unzip terraform-provider-pingdom_1.1.3_linux_amd64.zip -d ~/.terraform.d/plugins/linux_amd64/
 
-RUN pwsh -command "Install-Module Pester -force -verbose"
-
 RUN ls ~/.terraform.d/plugins/linux_amd64/
 
 RUN apt-get clean all
