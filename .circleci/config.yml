@@ -26,6 +26,7 @@ jobs:
             then
               echo $DOCKER_PASSWORD | docker login -u stopthatastronaut --password-stdin
               docker push stopthatastronaut/sizzle-ci:$TAG
+              docker push stopthatastronaut/sizzle-ci:latest
             fi
   build-staci:
     machine: true
@@ -43,6 +44,7 @@ jobs:
             then
               echo $DOCKER_PASSWORD | docker login -u stopthatastronaut --password-stdin
               docker push stopthatastronaut/sta-terraform:$TAG
+              docker push stopthatastronaut/sta-terraform:latest
             fi
 
 workflows:
