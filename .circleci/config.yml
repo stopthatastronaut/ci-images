@@ -11,6 +11,7 @@ jobs:
             echo "$CIRCLE_BUILD_NUM"
             echo "Tests go here, eventually"
             docker --version
+            docker image push --help
   build-sizzleci:
     machine: true
     steps:
@@ -26,7 +27,8 @@ jobs:
             if [[ "$CIRCLE_BRANCH" == "main" ]]
             then
               echo $DOCKER_PASSWORD | docker login -u stopthatastronaut --password-stdin
-              docker image push --all-tags stopthatastronaut/sizzle-ci
+              docker image push stopthatastronaut/sizzle-ci:$TAG
+              docker image push stopthatastronaut/sizzle-ci:latest
             fi
   build-staci:
     machine: true
@@ -43,7 +45,8 @@ jobs:
             if [[ "$CIRCLE_BRANCH" == "main" ]]
             then
               echo $DOCKER_PASSWORD | docker login -u stopthatastronaut --password-stdin
-              docker image push --all-tags stopthatastronaut/sta-terraform
+              docker image push stopthatastronaut/sta-terraform:$TAG
+              docker image push stopthatastronaut/sta-terraform:latest
             fi
 
 workflows:
