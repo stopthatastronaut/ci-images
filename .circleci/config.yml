@@ -25,7 +25,7 @@ jobs:
             if [[ "$CIRCLE_BRANCH" == "main" ]]
             then
               echo $DOCKER_PASSWORD | docker login -u stopthatastronaut --password-stdin
-              docker push --all-tags stopthatastronaut/sizzle-ci:$TAG
+              docker image push --all-tags stopthatastronaut/sizzle-ci:$TAG
             fi
   build-staci:
     machine: true
@@ -42,7 +42,7 @@ jobs:
             if [[ "$CIRCLE_BRANCH" == "main" ]]
             then
               echo $DOCKER_PASSWORD | docker login -u stopthatastronaut --password-stdin
-              docker push --all-tags stopthatastronaut/sta-terraform:$TAG
+              docker image push --all-tags stopthatastronaut/sta-terraform:$TAG
             fi
 
 workflows:
