@@ -32,7 +32,7 @@ RUN unzip terraform-provider-pingdom_1.1.3_linux_amd64.zip -d ~/.terraform.d/plu
 
 RUN pwsh -command "Install-Module Pester -force -verbose"
 
-RUN apt-get install openssh -y
+RUN apt-get install openssh-client -y
 
 RUN ls ~/.terraform.d/plugins/linux_amd64/
 
