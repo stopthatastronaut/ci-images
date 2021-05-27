@@ -11,6 +11,7 @@ jobs:
             echo "$CIRCLE_BUILD_NUM"
             echo "Tests go here, eventually"
             docker --version
+            docker image push --help
   build-sizzleci:
     machine: true
     steps:
@@ -21,12 +22,13 @@ jobs:
             # TODO: make this only run when changes are present
             cd sizzle-terraform
             TAG=0.1.$CIRCLE_BUILD_NUM
-            docker build -t stopthatastronaut/sizzle-ci:$TAG .
-            docker tag stopthatastronaut/sizzle-ci:$TAG stopthatastronaut/sizzle-ci:latest
+            docker build -t stopthatastronaut/sizzle-ci .
+            docker tag stopthatastronaut/sizzle-ci stopthatastronaut/sizzle-ci:$TAG
+            docker tag stopthatastronaut/sizzle-ci stopthatastronaut/sizzle-ci:latest
             if [[ "$CIRCLE_BRANCH" == "main" ]]
             then
               echo $DOCKER_PASSWORD | docker login -u stopthatastronaut --password-stdin
-              docker image push --all-tags stopthatastronaut/sizzle-ci
+              docker image push -a stopthatastronaut/sizzle-ci
             fi
   build-staci:
     machine: true
@@ -38,12 +40,13 @@ jobs:
             # TODO: make this only run when changes are present
             cd sta-terraform
             TAG=0.1.$CIRCLE_BUILD_NUM
-            docker build -t stopthatastronaut/sta-terraform:$TAG .
-            docker tag stopthatastronaut/sta-terraform:$TAG stopthatastronaut/sta-terraform:latest
+            docker build -t stopthatastronaut/sta-terraform .
+            docker tag stopthatastronaut/sta-terraform stopthatastronaut/sta-terraform:$TAG
+            docker tag stopthatastronaut/sta-terraform stopthatastronaut/sta-terraform:latest
             if [[ "$CIRCLE_BRANCH" == "main" ]]
             then
               echo $DOCKER_PASSWORD | docker login -u stopthatastronaut --password-stdin
-              docker image push --all-tags stopthatastronaut/sta-terraform
+              docker image push -a stopthatastronaut/sta-terraform
             fi
 
 workflows:
