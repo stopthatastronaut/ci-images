@@ -10,6 +10,7 @@ jobs:
             echo "$CIRCLE_BRANCH"
             echo "$CIRCLE_BUILD_NUM"
             echo "Tests go here, eventually"
+            docker --version
   build-sizzleci:
     machine: true
     steps:
