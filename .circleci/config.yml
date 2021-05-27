@@ -54,14 +54,8 @@ workflows:
             - DockerHub
           requires:
             - test
-          filters:
-            branches:
-              only: main
       - build-staci:
           context:
             - DockerHub
           requires:
             - test
-          filters:
-            branches:
-              only: main
