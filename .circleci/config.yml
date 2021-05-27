@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  test:
     machine: true
     steps:
       - checkout
@@ -10,6 +10,10 @@ jobs:
             echo "$CIRCLE_BRANCH"
             echo "$CIRCLE_BUILD_NUM"
             echo "Tests go here, eventually"
+  build-sizzleci:
+    machine: true
+    steps:
+      - checkout
       - run:
           name: Build the Sizzle CI Image
           command: |
@@ -22,6 +26,10 @@ jobs:
               echo $DOCKER_PASSWORD | docker login -u stopthatastronaut --password-stdin
               docker push stopthatastronaut/sizzle-ci:$TAG
             fi
+  build-staci:
+    machine: true
+    steps:
+      - checkout
       - run:
           name: Build the sta-terraform image
           command: |
@@ -38,6 +46,16 @@ jobs:
 workflows:
   build:
     jobs:
-      - build:
+      - test:
           context:
             - DockerHub
+      - build-sizzleci:
+          context:
+            - DockerHub
+          requires:
+            - test
+      - build-staci:
+          context:
+            - DockerHub
+          requires:
+            - test
