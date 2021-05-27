@@ -8,6 +8,7 @@ A terraform-oriented image for StopThatAstronaut/The Devops Company
 - Azure CLI latest
 - Powershell Core
 - AWS CLI latest
+- OpenSSH client (useful in the ror-aws-demo project)
 
 ## Build
 
