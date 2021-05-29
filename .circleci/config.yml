@@ -101,3 +101,13 @@ workflows:
             - DockerHub
           requires:
             - test
+      - build-pwshdummy:
+          context:
+            - DockerHub
+          requires:
+            - test
+      - build-sizzleterraform:
+          context:
+            - DockerHub
+          requires:
+            - test
