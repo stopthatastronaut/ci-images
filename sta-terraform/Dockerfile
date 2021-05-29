@@ -38,3 +38,7 @@ RUN ls ~/.terraform.d/plugins/linux_amd64/
 
 RUN apt-get clean all
 
+LABEL maintainer = "Jason Brown <d@evops.co>"
+
+LABEL description = "Ubuntu-based image for Continuous Integration of Terraform projects on Azure and AWS. Targeted at CircleCI, but will work with other docker-based CI systems"
+
