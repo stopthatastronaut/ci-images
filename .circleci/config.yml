@@ -48,6 +48,25 @@ jobs:
               docker image push stopthatastronaut/sta-terraform:$TAG
               docker image push stopthatastronaut/sta-terraform:latest
             fi
+  build-openscad:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Build the openscad image
+          command: |
+            # TODO: make this only run when changes are present
+            # TODO: build without push on branches or PRs
+            cd openscad
+            TAG=0.1.$CIRCLE_BUILD_NUM
+            docker build -t stopthatastronaut/openscad-tools:$TAG .
+            docker tag stopthatastronaut/openscad-tools:$TAG stopthatastronaut/openscad-tools:latest
+            if [[ "$CIRCLE_BRANCH" == "main" ]]
+            then
+              echo $DOCKER_PASSWORD | docker login -u stopthatastronaut --password-stdin
+              docker image push stopthatastronaut/openscad-tools:$TAG
+              docker image push stopthatastronaut/openscad-tools:latest
+            fi
 
 workflows:
   build:
