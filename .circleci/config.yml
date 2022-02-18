@@ -1,7 +1,8 @@
 version: 2.1
 jobs:
   test:
-    machine: true
+    machine:
+      image: ubuntu-2004:202201-02
     steps:
       - checkout
       - run:
@@ -13,7 +14,8 @@ jobs:
             docker --version
             docker image push --help
   build-sizzleci:
-    machine: true
+    machine:
+      image: ubuntu-2004:202201-02
     steps:
       - checkout
       - run:
@@ -31,7 +33,8 @@ jobs:
               docker image push stopthatastronaut/sizzle-ci:latest
             fi
   build-staci:
-    machine: true
+    machine:
+      image: ubuntu-2004:202201-02
     steps:
       - checkout
       - run:
@@ -49,7 +52,8 @@ jobs:
               docker image push stopthatastronaut/sta-terraform:latest
             fi
   build-openscad:
-    machine: true
+    machine:
+      image: ubuntu-2004:202201-02
     steps:
       - checkout
       - run:
