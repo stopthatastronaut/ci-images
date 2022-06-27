@@ -18,4 +18,4 @@ RUN apt-get install powershell unzip -y
 
 RUN echo deb https://apt.octopus.com/ stable main > /etc/apt/sources.list.d/octopus.com.list
 
-RUN apt update && apt install octopuscli
+RUN apt update && apt install octopuscli -y
