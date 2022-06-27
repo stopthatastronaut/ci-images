@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y lsb-release
 
 RUN apt-get install ca-certificates curl gnupg2 wget apt-transport-https apt-utils software-properties-common -y
 
-RUN curl -sSfL https://apt.octopus.com/public.key | sudo apt-key add - > /dev/null
+RUN curl -sSfL https://apt.octopus.com/public.key | apt-key add - > /dev/null
 
 RUN wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 
